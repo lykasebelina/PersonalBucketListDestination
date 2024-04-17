@@ -1,0 +1,17 @@
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListBL.deps.json
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListBL.dll
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListBL.pdb
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListDL.dll
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListMODEL.dll
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListDL.pdb
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/bin/Debug/net7.0/BucketListMODEL.pdb
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.csproj.AssemblyReference.cache
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.AssemblyInfoInputs.cache
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.AssemblyInfo.cs
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.csproj.CoreCompileInputs.cache
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.csproj.CopyComplete
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.dll
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/refint/BucketListBL.dll
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/BucketListBL.pdb
+/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListBL/obj/Debug/net7.0/ref/BucketListBL.dll

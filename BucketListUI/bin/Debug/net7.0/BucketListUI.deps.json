@@ -1,0 +1,63 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "BucketListUI/1.0.0": {
+        "dependencies": {
+          "BucketListBL": "1.0.0"
+        },
+        "runtime": {
+          "BucketListUI.dll": {}
+        }
+      },
+      "BucketListBL/1.0.0": {
+        "dependencies": {
+          "BucketListDL": "1.0.0",
+          "BucketListMODEL": "1.0.0"
+        },
+        "runtime": {
+          "BucketListBL.dll": {}
+        }
+      },
+      "BucketListDL/1.0.0": {
+        "dependencies": {
+          "BucketListMODEL": "1.0.0"
+        },
+        "runtime": {
+          "BucketListDL.dll": {}
+        }
+      },
+      "BucketListMODEL/1.0.0": {
+        "runtime": {
+          "BucketListMODEL.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BucketListUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BucketListBL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BucketListDL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BucketListMODEL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

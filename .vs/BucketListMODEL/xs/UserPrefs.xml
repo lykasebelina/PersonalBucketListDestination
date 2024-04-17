@@ -1,0 +1,7 @@
+﻿<Properties StartupConfiguration="{E97C98E2-4EC6-4AA8-84CD-206C5585CDCB}|Default">
+  <MonoDevelop.Ide.ItemProperties.BucketListBL FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.BucketListDL FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.BucketListMODEL FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BucketListUI FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
