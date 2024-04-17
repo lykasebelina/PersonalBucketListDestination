@@ -1,15 +1,19 @@
 ﻿<Properties StartupConfiguration="{E97C98E2-4EC6-4AA8-84CD-206C5585CDCB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BucketListBL/DestinationService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BucketListUI/Program.cs">
     <Files>
-      <File FileName="BucketListMODEL/Class1.cs" Line="14" Column="2" />
-      <File FileName="BucketListMODEL/Owner.cs" Line="9" Column="2" />
-      <File FileName="BucketListBL/Class1.cs" Line="36" Column="1" />
-      <File FileName="BucketListDL/Class1.cs" Line="2" Column="1" />
-      <File FileName="BucketListUI/Program.cs" Line="12" Column="30" />
+      <File FileName="BucketListMODEL/Owner.cs" />
+      <File FileName="BucketListUI/Program.cs" Line="113" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State name="__root__" />
+        <State name="__root__">
+          <Node name="BucketListDestinationProject" expanded="True">
+            <Node name="BucketListMODEL" expanded="True" />
+            <Node name="BucketListUI" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListDL/BucketListDL.csproj": {}
+    "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListDL/BucketListDL.csproj": {}
   },
   "projects": {
-    "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListDL/BucketListDL.csproj": {
+    "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListDL/BucketListDL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListDL/BucketListDL.csproj",
+        "projectUniqueName": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListDL/BucketListDL.csproj",
         "projectName": "BucketListDL",
-        "projectPath": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListDL/BucketListDL.csproj",
+        "projectPath": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListDL/BucketListDL.csproj",
         "packagesPath": "/Users/lykamaesebelina/.nuget/packages/",
-        "outputPath": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListDL/obj/",
+        "outputPath": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListDL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/lykamaesebelina/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/BucketListMODEL.csproj": {
-                "projectPath": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/BucketListMODEL.csproj"
+              "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/BucketListMODEL.csproj": {
+                "projectPath": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/BucketListMODEL.csproj"
               }
             }
           }
@@ -61,14 +61,14 @@
         }
       }
     },
-    "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/BucketListMODEL.csproj": {
+    "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/BucketListMODEL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/BucketListMODEL.csproj",
+        "projectUniqueName": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/BucketListMODEL.csproj",
         "projectName": "BucketListMODEL",
-        "projectPath": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/BucketListMODEL.csproj",
+        "projectPath": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/BucketListMODEL.csproj",
         "packagesPath": "/Users/lykamaesebelina/.nuget/packages/",
-        "outputPath": "/Users/lykamaesebelina/Projects/BucketListMODEL/BucketListMODEL/obj/",
+        "outputPath": "/Users/lykamaesebelina/Projects/PersonalBucketListDestination/BucketListMODEL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/lykamaesebelina/.nuget/NuGet/NuGet.Config"

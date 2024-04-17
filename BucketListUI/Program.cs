@@ -4,19 +4,18 @@ using BucketListMODEL;
 namespace BucketListUI
 {
 
-    public class Program
+    internal class Program
     {
         public static void Main(string[] args)
         {
-            Program1 myprogram = new Program1();
+            Program myprogram = new Program();
             myprogram.Runn();
 
         }
 
-    }
+    
 
-    public class Program1
-    {
+  
         public void Runn()
         {
             Console.WriteLine("PERSONAL BUCKET LIST DESTINATIONS");
@@ -37,8 +36,8 @@ namespace BucketListUI
             if (result)
             {
                 Console.Clear();
-                Program2 newMainProg = new Program2();
-                newMainProg.Run();
+                Program myMainProg = new Program();
+                myMainProg.Run();
 
             }
 
@@ -49,16 +48,15 @@ namespace BucketListUI
                 string key1 = Console.ReadLine();
 
                 Console.Clear();
-                Program1 prog = new Program1();
-                prog.Runn();
+                Program prog0 = new Program();
+                prog0.Runn();
             }
 
         }
 
-    }
+    
 
-    public class Program2
-    {
+ 
 
         public void Run()
         {
@@ -114,7 +112,7 @@ namespace BucketListUI
 
                         Console.WriteLine();
                         Console.WriteLine("ABOUT DESTINATION");
-
+                        Console.WriteLine();
                         Console.WriteLine($"Name: {details.destination}");
                         Console.WriteLine($"Major Attractions: {details.majorAttraction}");
                         Console.WriteLine($"Established: {details.yearEstablished}");
@@ -134,7 +132,7 @@ namespace BucketListUI
 
                     Console.Clear();
 
-                    Program2 prog1 = new Program2();
+                    Program prog1 = new Program();
                     prog1.Run();
 
 
@@ -169,8 +167,8 @@ namespace BucketListUI
 
                     Console.Clear();
 
-                    Program2 prog0 = new Program2();
-                    prog0.Run();
+                    Program prog2 = new Program();
+                    prog2.Run();
 
                     break;
 
@@ -210,7 +208,7 @@ namespace BucketListUI
 
                     Console.Clear();
 
-                    Program2 prog3 = new Program2();
+                    Program prog3 = new Program();
                     prog3.Run();
 
                     break;
@@ -224,7 +222,7 @@ namespace BucketListUI
 
                     Console.Clear();
 
-                    Program2 prog4 = new Program2();
+                    Program prog4 = new Program();
                     prog4.Run();
 
                     break;
