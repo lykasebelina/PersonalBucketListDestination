@@ -1,234 +1,107 @@
-﻿using BucketListDL;
+using System;
+using BucketListBL;
 using BucketListMODEL;
+using System.Collections.Generic;
+
 
 namespace BucketListUI
 {
-
-    internal class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Program myprogram = new Program();
-            myprogram.Runn();
+            string connectionString = 
+            "Data Source =LAPTOP-MLIHGQC9\Lawrence; Initial Catalog = BucketListDestinationProject; Integrated Security = True;";
+            DestinationService service = new DestinationService(connectionString);
 
-        }
-
-    
-
-  
-        public void Runn()
-        {
-            Console.WriteLine("PERSONAL BUCKET LIST DESTINATIONS");
-            Console.WriteLine();
-
-
-            Console.Write("Username: ");
+            Console.WriteLine("Welcome to Travel Bucket List App!");
+            Console.Write("Enter Username: ");
             string username = Console.ReadLine();
-
-            Console.Write("Password: ");
+            Console.Write("Enter Password: ");
             string password = Console.ReadLine();
-            Console.WriteLine();
 
-            BucketListBL.DestinationService destinationService = new BucketListBL.DestinationService();
-            bool result = destinationService.VerifyOwner(username, password);
+            Owner user = service.Login(username, password);
 
-
-            if (result)
+            if (user != null)
             {
-                Console.Clear();
-                Program myMainProg = new Program();
-                myMainProg.Run();
+                Console.WriteLine("Login successful!");
 
+                bool running = true;
+                while (running)
+                {
+                    Console.WriteLine("1. Search Destination");
+                    Console.WriteLine("2. View All Destinations");
+                    Console.WriteLine("3. Add Destination");
+                    Console.WriteLine("4. Delete Destination");
+                    Console.WriteLine("5. Exit");
+
+                    Console.Write("Choose an option: ");
+                    string choice = Console.ReadLine();
+
+                    switch (choice)
+                    {
+                        case "1":
+                            Console.Write("Enter Destination ID: ");
+                            int id = int.Parse(Console.ReadLine());
+                            Destination destination = service.GetDestination(id);
+                            if (destination != null)
+                            {
+                                Console.WriteLine($"Name: {destination.Name}");
+                                Console.WriteLine($"Description: {destination.Description}");
+                                Console.WriteLine($"Country: {destination.Country}");
+                                Console.WriteLine($"City: {destination.City}");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Destination not found.");
+                            }
+                            break;
+
+                        case "2":
+                            List<Destination> destinations = service.GetAllDestinations();
+                            foreach (var dest in destinations)
+                            {
+                                Console.WriteLine($"ID: {dest.DestinationId}, Name: {dest.Name}, Country: {dest.Country}, City: {dest.City}");
+                            }
+                            break;
+
+                        case "3":
+                            Destination newDestination = new Destination();
+                            Console.Write("Enter Name: ");
+                            newDestination.Name = Console.ReadLine();
+                            Console.Write("Enter Description: ");
+                            newDestination.Description = Console.ReadLine();
+                            Console.Write("Enter Country: ");
+                            newDestination.Country = Console.ReadLine();
+                            Console.Write("Enter City: ");
+                            newDestination.City = Console.ReadLine();
+
+                            service.AddDestination(newDestination);
+                            Console.WriteLine("Destination added successfully.");
+                            break;
+
+                        case "4":
+                            Console.Write("Enter Destination ID to delete: ");
+                            int deleteId = int.Parse(Console.ReadLine());
+                            service.DeleteDestination(deleteId);
+                            Console.WriteLine("Destination deleted successfully.");
+                            break;
+
+                        case "5":
+                            running = false;
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid choice. Please try again.");
+                            break;
+                    }
+                }
             }
-
-
             else
             {
-                Console.WriteLine("Invalid username and password! Press 'ENTER' key to restart.");
-                string key1 = Console.ReadLine();
-
-                Console.Clear();
-                Program prog0 = new Program();
-                prog0.Runn();
+                Console.WriteLine("Login failed. Invalid username or password.");
             }
-
-        }
-
-    
-
- 
-
-        public void Run()
-        {
-
-            Console.WriteLine("WELCOME BACK LYKA!");
-            Console.WriteLine();
-
-
-            BucketListBL.DestinationService destinationService = new BucketListBL.DestinationService();
-            List<Destination> destinations = destinationService.DisplayDestinationNames();
-
-            Console.WriteLine("Here's your Bucket List Destinations:");
-            Console.WriteLine();
-
-            foreach (var name in destinations)
-            {
-                Console.WriteLine("  > " + name.destination);
-            }
-
-
-            Console.WriteLine();
-            Console.WriteLine("Choose What To Do:");
-            Console.WriteLine("  1 - Search Destination");
-            Console.WriteLine("  2 - Add New Destination");
-            Console.WriteLine("  3 - Remove Destination");
-            Console.WriteLine();
-            Console.Write("Enter Number Of Choice: ");
-
-            string option = Console.ReadLine();
-
-
-            switch (option)
-            {
-                case "1":
-
-
-
-                    Console.WriteLine();
-                    Console.WriteLine("---------- SEARCH OPTION ----------");
-                    Console.WriteLine();
-
-                    Console.Write("Search Destination: ");
-                    string search = Console.ReadLine();
-
-
-                    bool results = destinationService.VerifyDestination(search);
-
-                    DestinationDataService destinationDataService = new DestinationDataService();
-                    Destination details = destinationDataService.GetDestination(search);
-
-                    if (results)
-                    {
-
-                        Console.WriteLine();
-                        Console.WriteLine("ABOUT DESTINATION");
-                        Console.WriteLine();
-                        Console.WriteLine($"Name: {details.destination}");
-                        Console.WriteLine($"Major Attractions: {details.majorAttraction}");
-                        Console.WriteLine($"Established: {details.yearEstablished}");
-                        Console.WriteLine($"Address: {details.address}");
-                        Console.WriteLine($"Opening Hours: {details.openingHours}");
-                    }
-
-                    else
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Destination not found. Please refer from the list!");
-                    }
-
-                    Console.WriteLine();
-                    Console.WriteLine("Press 'ENTER' key to restart.");
-                    Console.ReadLine();
-
-                    Console.Clear();
-
-                    Program prog1 = new Program();
-                    prog1.Run();
-
-
-                    break;
-
-
-                case "2":
-
-
-
-                    Console.WriteLine();
-                    Console.WriteLine("---------- ADD OPTION ----------");
-                    Console.WriteLine();
-                    Console.Write("Enter New Destination: ");
-                    string newDestination = Console.ReadLine();
-
-                    destinationService.AddNewDestination(newDestination);
-
-                    Console.WriteLine();
-                    Console.WriteLine("Destination has been added successfully!\nHere's the updated list: ");
-                    Console.WriteLine();
-
-                    foreach (var name in destinations)
-                    {
-                        Console.WriteLine("  > " + name.destination);
-                    }
-
-
-                    Console.WriteLine();
-                    Console.WriteLine("Press 'ENTER' key to restart.");
-                    Console.ReadLine();
-
-                    Console.Clear();
-
-                    Program prog2 = new Program();
-                    prog2.Run();
-
-                    break;
-
-
-                case "3":
-
-
-
-                    Console.WriteLine();
-                    Console.WriteLine("---------- REMOVE OPTION ----------");
-                    Console.WriteLine();
-                    Console.Write("Enter Destination Name: ");
-                    string delDestination = Console.ReadLine();
-                    Console.WriteLine();
-
-                    if (destinationService.RemoveDestination(delDestination))
-                    {
-
-                        Console.WriteLine("Destination has been removed successfully!\nHere's the updated list: ");
-                        Console.WriteLine();
-
-                        foreach (var name in destinations)
-                        {
-                            Console.WriteLine("  > " + name.destination);
-                        }
-
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Destination not found. Try again!");
-                    }
-
-                    Console.WriteLine();
-                    Console.WriteLine("Press 'ENTER' key to restart.");
-                    Console.ReadLine();
-
-                    Console.Clear();
-
-                    Program prog3 = new Program();
-                    prog3.Run();
-
-                    break;
-
-
-                default:
-
-                    Console.WriteLine();
-                    Console.WriteLine("Invalid choice! Press 'ENTER' key to restart.");
-                    Console.ReadLine();
-
-                    Console.Clear();
-
-                    Program prog4 = new Program();
-                    prog4.Run();
-
-                    break;
-            }
-
         }
     }
-
 }
