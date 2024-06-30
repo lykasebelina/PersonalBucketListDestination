@@ -1,14 +1,12 @@
-﻿namespace BucketListMODEL
+namespace BucketListMODEL
 {
     public class Destination
     {
-        public Owner access;
-        public string destination;
-        public string majorAttraction;
-        public string yearEstablished;
-        public string address;
-        public string openingHours;
-
+        public int DestinationId;
+        public string Name;
+        public string Description;
+        public string Country;
+        public string City;
 
     }
 }
