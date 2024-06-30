@@ -1,55 +1,42 @@
-﻿using BucketListDL;
 using BucketListMODEL;
+using BucketListDL;
+using System.Collections.Generic;
 
 
 namespace BucketListBL
 {
     public class DestinationService
     {
-        DestinationDataService destinationDataService = new DestinationDataService();
+        private DestinationDataService _dbContext;
 
-        public bool VerifyOwner(string username, string password)
+        public DestinationService(string connectionString)
         {
-
-
-            var result = destinationDataService.GetOwner(username, password);
-
-
-            return result.username != null ? true : false;
-            return result.password != null ? true : false;
-
-
+            _dbContext = new DestinationDataService(connectionString);
         }
 
-        public bool VerifyDestination(string destination)
+        public Owner Login(string username, string password)
         {
-
-
-            var results = destinationDataService.GetDestination(destination);
-
-            return results.destination != null ? true : false;
-
+            return _dbContext.GetUser(username, password);
         }
 
-        public List<Destination> DisplayDestinationNames()
+        public List<Destination> GetAllDestinations()
         {
-
-            return destinationDataService.GetDestinationNames();
+            return _dbContext.GetAllDestinations();
         }
 
-
-        public bool RemoveDestination(string delDestination)
+        public void AddDestination(Destination destination)
         {
-            return destinationDataService.DeleteDestinations(delDestination);
+            _dbContext.AddDestination(destination);
         }
 
-        public void AddNewDestination(string newDestination)
+        public void DeleteDestination(int id)
         {
-            var addDes = new Destination { destination = newDestination };
-            destinationDataService.AddDestination(addDes);
+            _dbContext.DeleteDestination(id);
+        }
 
-
-
+        public Destination GetDestination(int id)
+        {
+            return _dbContext.GetDestination(id);
         }
     }
 }
