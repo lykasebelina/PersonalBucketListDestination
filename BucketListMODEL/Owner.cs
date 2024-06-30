@@ -1,9 +1,9 @@
-﻿namespace BucketListMODEL
+namespace BucketListMODEL
 {
     public class Owner
     {
-        public string username;
-        public string password;
-
+        public int UserId;
+        public string Username;
+        public string Password;
     }
 }
