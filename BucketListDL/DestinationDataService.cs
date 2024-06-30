@@ -1,143 +1,112 @@
-﻿using BucketListMODEL;
-
+using MySql.Data.MySqlClient;
+using BucketListMODEL;
+using System.Collections.Generic;
 
 namespace BucketListDL
 {
-
     public class DestinationDataService
     {
-        List<Destination> destinations = new List<Destination>();
-        List<Owner> owner = new List<Owner>();
+        private string connectionString;
 
-        public DestinationDataService()
+        public DestinationDataService(string connectionString)
         {
-            CreateDestinationData();
+            this.connectionString = connectionString;
         }
 
-        private void CreateDestinationData()
+        public Owner GetUser(string username, string password)
         {
-            Owner defaultOwner = new Owner
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                username = "lykasebelina",
-                password = "00260"
-            };
-
-            destinations.Add(new Destination
-            {
-                destination = "Las Casas Filipinas de Acuzar",
-                majorAttraction = "Spanish-Filipino Colonial Structures",
-                yearEstablished = "1780",
-                address = "Bagac, Bataan, Philippines",
-                openingHours = "Open 24 Hours",
-                access = defaultOwner
-
-            });
-
-            destinations.Add(new Destination
-            {
-                destination = "Intramuros",
-                majorAttraction = "Museums and Churches",
-                yearEstablished = "1571",
-                address = "Bonifacio Dr & Padre Burgos St, Manila, Luzon 1002, Philippines",
-                openingHours = "9 AM-5 PM",
-                access = defaultOwner
-
-            });
-
-            destinations.Add(new Destination
-            {
-                destination = "Calle Crisologo",
-                majorAttraction = "Ancestral Houses",
-                yearEstablished = "16th Century",
-                address = "Crisologo, Vigan City, Ilocos Sur",
-                openingHours = "Open 24 Hours",
-                access = defaultOwner
-            });
-
-            destinations.Add(new Destination
-            {
-                destination = "Manila Ocean Park",
-                majorAttraction = "Oceanarium",
-                yearEstablished = "2007",
-                address = "Quirino Grandstand, 666 Behind, Ermita, Manila, 1000 Metro Manila",
-                openingHours = "10 AM-6 PM",
-                access = defaultOwner
-            });
-
-            destinations.Add(new Destination
-            {
-                destination = "Burnham Park",
-                majorAttraction = "Orchidarium, Gardens, and Man-made Lake",
-                yearEstablished = "1907",
-                address = "Jose Abad Santos Dr, Baguio, 2600 Benguet",
-                openingHours = "Open 24 Hours",
-                access = defaultOwner
-            });
-
-            owner.Add(defaultOwner);
-
-
-        }
-
-
-        public Owner GetOwner(string username, string password)
-        {
-            Owner foundOwner = new Owner();
-
-            foreach (var ownerData in owner)
-            {
-                if (username == ownerData.username && password == ownerData.password)
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT * FROM Users WHERE Username=@username AND Password=@password", conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
                 {
-                    foundOwner = ownerData;
+                    return new Owner
+                    {
+                        UserId = reader.GetInt32("User ID"),
+                        Username = reader.GetString("Username"),
+                        Password = reader.GetString("Password")
+                    };
                 }
             }
-
-            return foundOwner;
+            return null;
         }
 
-        public Destination GetDestination(string destination)
+        public List<Destination> GetAllDestinations()
         {
-            Destination foundDestination = new Destination();
-
-            foreach (var data in destinations)
+            var destinations = new List<Destination>();
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                if (destination == data.destination)
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM Destinations", conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    foundDestination = data;
+                    destinations.Add(new Destination
+                    {
+                        DestinationId = reader.GetInt32("ID"),
+                        Name = reader.GetString("Name"),
+                        Description = reader.GetString("Description"),
+                        Country = reader.GetString("Country"),
+                        City = reader.GetString("City")
+
+                    });
                 }
             }
-
-            return foundDestination;
-
-        }
-
-        public List<Destination> GetDestinationNames()
-        {
-
             return destinations;
         }
 
-
-        public bool DeleteDestinations(string delDestination)
+        public void AddDestination(Destination destination)
         {
-
-            var place = destinations.FirstOrDefault(n => n.destination == delDestination);
-            if (place != null)
-
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                destinations.Remove(place);
-                return true;
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO Destinations (Name, Description, Country, City, ImportantInfo) VALUES (@name, @description, @country, @city)", conn);
+                cmd.Parameters.AddWithValue("@name", destination.Name);
+                cmd.Parameters.AddWithValue("@description", destination.Description);
+                cmd.Parameters.AddWithValue("@country", destination.Country);
+                cmd.Parameters.AddWithValue("@city", destination.City);
+
+                cmd.ExecuteNonQuery();
             }
-
-            return false;
-
         }
 
-        public void AddDestination(Destination addDestination)
+        public void DeleteDestination(int id)
         {
-            destinations.Add(addDestination);
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM Destinations WHERE DestinationId=@id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public Destination GetDestination(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM Destinations WHERE DestinationId=@id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Destination
+                    {
+                        DestinationId = reader.GetInt32("Destination ID"),
+                        Name = reader.GetString("Name"),
+                        Description = reader.GetString("Description"),
+                        Country = reader.GetString("Country"),
+                        City = reader.GetString("City")
+
+                    };
+                }
+            }
+            return null;
         }
     }
-
-
 }
